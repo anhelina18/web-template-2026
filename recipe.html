@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%- include('./src/views/partials/head.ejs', {
+    title: recipeDetails.title,
+    description: recipeDetails.summary,
+  }) %>
+</head>
+<body class="page page--recipe">
+  <%- include('./src/views/partials/header.ejs', { page: 'recipes' }) %>
+  <% const r = recipeDetails; const saved = favoriteIds.includes(r.id); %>
+
+  <main class="main recipe-page" id="main">
+    <a class="back-link" href="./recipes.html">
+      <%- include('./src/views/partials/icon.ejs', { name: 'arrow-left', size: 16 }) %>
+      <span data-i18n="recipe.back">Back to recipes</span>
+    </a>
+
+    <article class="recipe" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="<%= r.id %>">
+      <div class="recipe__hero">
+        <div class="recipe__media-wrap">
+          <%- include('./src/views/partials/picture.ejs', {
+            name: r.image,
+            alt: r.alt,
+            widths: [400, 800, 1200],
+            sizes: '(min-width: 1280px) 600px, 100vw',
+            width: 1200,
+            height: 900,
+            pictureClass: 'recipe__media',
+            imgClass: 'recipe__img',
+            itemprop: 'image',
+            priority: true,
+          }) %>
+          <button class="recipe__favorite-badge favorite-button" type="button" aria-pressed="<%= saved %>" aria-label="Save to favorites" data-i18n-aria-label="card.save" data-action="toggle-favorite">
+            <%- include('./src/views/partials/icon.ejs', { name: 'heart', size: 24, filled: saved }) %>
+          </button>
+        </div>
+
+        <div class="recipe__summary">
+          <p class="recipe__tag tag" itemprop="recipeCategory"><%= r.category %></p>
+          <h1 class="recipe__title" itemprop="name"><%= r.title %></h1>
+          <p class="recipe__description" itemprop="description"><%= r.summary %></p>
+          <ul class="recipe__meta meta meta--large" aria-label="Recipe details" data-i18n-aria-label="card.details">
+            <li class="meta__item">
+              <%- include('./src/views/partials/icon.ejs', { name: 'clock', size: 20 }) %>
+              <time itemprop="totalTime" datetime="PT<%= r.time %>M"><%= r.time %> min</time>
+            </li>
+            <li class="meta__item">
+              <%- include('./src/views/partials/icon.ejs', { name: 'chef', size: 20 }) %>
+              <span><%= r.difficulty %></span>
+            </li>
+            <li class="meta__item">
+              <%- include('./src/views/partials/icon.ejs', { name: 'users', size: 20 }) %>
+              <span itemprop="recipeYield"><%= r.servings %> servings</span>
+            </li>
+          </ul>
+          <div class="recipe__actions">
+            <button class="recipe__save button button--primary" type="button" aria-pressed="<%= saved %>" data-action="toggle-favorite">
+              <%- include('./src/views/partials/icon.ejs', { name: 'heart', size: 16, filled: saved }) %>
+              <span data-i18n="recipe.save">Save to favorites</span>
+            </button>
+            <button class="recipe__print button button--outline" type="button" data-action="print" data-i18n="recipe.print">Print recipe</button>
+          </div>
+          <dl class="recipe__facts facts">
+            <div class="facts__item">
+              <dt class="facts__term" data-i18n="recipe.prep">Prep</dt>
+              <dd class="facts__value"><time itemprop="prepTime" datetime="PT<%= r.prepTime %>M"><%= r.prepTime %> min</time></dd>
+            </div>
+            <div class="facts__item">
+              <dt class="facts__term" data-i18n="recipe.cook">Cook</dt>
+              <dd class="facts__value"><time itemprop="cookTime" datetime="PT<%= r.cookTime %>M"><%= r.cookTime %> min</time></dd>
+            </div>
+            <div class="facts__item">
+              <dt class="facts__term" data-i18n="recipe.serves">Serves</dt>
+              <dd class="facts__value"><%= r.servings %></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="recipe__content">
+        <section class="recipe__panel ingredients" aria-labelledby="ingredients-title">
+          <h2 class="ingredients__title" id="ingredients-title" data-i18n="recipe.ingredients">Ingredients</h2>
+          <form class="servings">
+            <button class="servings__button" type="button" data-step="-1" aria-label="Fewer servings" data-i18n-aria-label="recipe.fewer">
+              <%- include('./src/views/partials/icon.ejs', { name: 'minus', size: 16 }) %>
+            </button>
+            <label class="servings__field" for="servings">
+              <input class="servings__input" id="servings" name="servings" type="number" min="1" max="12" step="1" value="<%= r.servings %>" inputmode="numeric">
+              <span class="servings__unit" data-i18n="recipe.servings">servings</span>
+            </label>
+            <button class="servings__button" type="button" data-step="1" aria-label="More servings" data-i18n-aria-label="recipe.more">
+              <%- include('./src/views/partials/icon.ejs', { name: 'plus', size: 16 }) %>
+            </button>
+          </form>
+          <ul class="ingredients__list">
+            <% r.ingredients.forEach((item) => { %>
+            <li class="ingredients__item">
+              <label class="check">
+                <input class="check__input" type="checkbox">
+                <span class="check__label" itemprop="recipeIngredient"><%= item %></span>
+              </label>
+            </li>
+            <% }) %>
+          </ul>
+        </section>
+
+        <section class="recipe__panel instructions" aria-labelledby="instructions-title">
+          <h2 class="instructions__title" id="instructions-title" data-i18n="recipe.instructions">Instructions</h2>
+          <ol class="instructions__list">
+            <% r.steps.forEach((step) => { %>
+            <li class="instructions__step" itemprop="recipeInstructions" itemscope itemtype="https://schema.org/HowToStep">
+              <h3 class="instructions__step-title" itemprop="name"><%= step.title %></h3>
+              <p class="instructions__text" itemprop="text"><%= step.text %></p>
+            </li>
+            <% }) %>
+          </ol>
+          <aside class="tip" aria-labelledby="tip-title">
+            <%- include('./src/views/partials/icon.ejs', { name: 'bulb', size: 28, className: 'tip__icon' }) %>
+            <h3 class="tip__title" id="tip-title" data-i18n="recipe.tip">Cooking tip</h3>
+            <p class="tip__text"><%= r.tip %></p>
+          </aside>
+        </section>
+      </div>
+    </article>
+
+    <section class="similar" aria-labelledby="similar-title">
+      <h2 class="section-title" id="similar-title" data-i18n="recipe.similar">You might also like</h2>
+      <ul class="similar__list card-list card-list--2">
+        <% recipes.filter((item) => r.similar.includes(item.id)).forEach((recipe) => { %>
+        <li class="card-list__item"><%- include('./src/views/partials/recipe-card.ejs', { recipe, variant: 'horizontal', idPrefix: 'similar' }) %></li>
+        <% }) %>
+      </ul>
+    </section>
+  </main>
+
+  <%- include('./src/views/partials/footer.ejs', { page: 'recipes' }) %>
+</body>
+</html>

@@ -1,24 +1,46 @@
-import { defineConfig } from "vite";
-import { fileURLToPath } from "node:url";
+import { defineConfig } from 'vite';
+import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+import ejs from 'ejs';
+import * as data from './src/views/data.js';
 
-const page = (name) => fileURLToPath(new URL(`./src/${name}`, import.meta.url));
+const root = fileURLToPath(new URL('.', import.meta.url));
+
+/**
+ * Renders EJS inside .html pages before Vite processes them,
+ * so partials (header, footer, card, icon) are reused across pages.
+ */
+function ejsHtml(locals) {
+  return {
+    name: 'ejs-html',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, ctx) {
+        return ejs.render(html, locals, { filename: ctx.filename });
+      },
+    },
+    handleHotUpdate({ file, server }) {
+      if (file.endsWith('.ejs')) {
+        server.ws.send({ type: 'full-reload' });
+        return [];
+      }
+      return undefined;
+    },
+  };
+}
 
 export default defineConfig({
-  root: "src",
-  publicDir: "../public",
-  server: { port: 5173, open: true },
-  preview: { port: 4173 },
+  base: './',
+  server: { port: 5173 },
+  plugins: [ejsHtml({ ...data })],
   build: {
-    outDir: "../dist",
-    emptyOutDir: true,
-    sourcemap: true,
     rollupOptions: {
       input: {
-        index: page("index.html"),
-        recipes: page("recipes.html"),
-        "recipe-details": page("recipe-details.html"),
-        favorites: page("favorites.html")
-      }
-    }
-  }
+        home: resolve(root, 'index.html'),
+        recipes: resolve(root, 'recipes.html'),
+        recipe: resolve(root, 'recipe.html'),
+        favorites: resolve(root, 'favorites.html'),
+      },
+    },
+  },
 });

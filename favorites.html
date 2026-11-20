@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%- include('./src/views/partials/head.ejs', {
+    title: 'Favorites',
+    description: 'The recipes you love, all in one place.',
+  }) %>
+</head>
+<body class="page page--favorites">
+  <%- include('./src/views/partials/header.ejs', { page: 'favorites' }) %>
+  <% const saved = recipes.filter((item) => favoriteIds.includes(item.id)); %>
+
+  <main class="main favorites" id="main">
+    <header class="page-header favorites__header">
+      <span class="favorites__icon">
+        <%- include('./src/views/partials/icon.ejs', { name: 'heart', size: 28 }) %>
+      </span>
+      <div class="favorites__heading">
+        <h1 class="page-header__title" data-i18n="favorites.title">Your favorites</h1>
+        <p class="page-header__text" data-i18n="favorites.lead">The recipes you love, all in one place.</p>
+      </div>
+      <p class="favorites__badge badge" aria-live="polite"><span class="favorites__count"><%= saved.length %></span> saved recipes</p>
+    </header>
+
+    <form class="favorites__toolbar toolbar" role="search" action="./favorites.html" method="get">
+      <label class="u-sr-only" for="favorites-query" data-i18n="favorites.searchLabel">Search your favorites</label>
+      <div class="toolbar__search search-form__field">
+        <%- include('./src/views/partials/icon.ejs', { name: 'search', size: 18, className: 'search-form__icon' }) %>
+        <input class="search-form__input" id="favorites-query" name="q" type="search" autocomplete="off" maxlength="60" placeholder="Search your favorites...." data-i18n-placeholder="favorites.searchPlaceholder">
+      </div>
+      <button class="toolbar__filters icon-button icon-button--outline" type="button" aria-expanded="false" aria-controls="favorites-selects" aria-label="Show filters" data-i18n-aria-label="catalog.showFilters">
+        <%- include('./src/views/partials/icon.ejs', { name: 'sliders' }) %>
+      </button>
+      <div class="toolbar__selects" id="favorites-selects">
+        <label class="u-sr-only" for="favorites-category" data-i18n="catalog.category">Category</label>
+        <select class="toolbar__select field" id="favorites-category" name="category">
+          <option value="" data-i18n="favorites.allCategories">All categories</option>
+          <% categories.forEach((category) => { %>
+          <option value="<%= category.id %>"><%= category.label %></option>
+          <% }) %>
+        </select>
+        <label class="u-sr-only" for="favorites-sort" data-i18n="catalog.sortLabel">Sort recipes</label>
+        <select class="toolbar__select field" id="favorites-sort" name="sort">
+          <option value="recent">Recently saved</option>
+          <option value="title">A–Z</option>
+          <option value="time">Quickest</option>
+        </select>
+      </div>
+      <fieldset class="toolbar__chips">
+        <legend class="u-sr-only" data-i18n="catalog.category">Category</legend>
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="" checked>
+          <span class="pill__label">All</span>
+        </label>
+        <% categories.forEach((category) => { %>
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="<%= category.id %>">
+          <span class="pill__label"><%= category.label %></span>
+        </label>
+        <% }) %>
+      </fieldset>
+    </form>
+
+    <section class="favorites__saved" aria-labelledby="saved-title">
+      <h2 class="u-sr-only" id="saved-title" data-i18n="favorites.saved">Saved recipes</h2>
+      <ul class="favorites__list card-list card-list--2">
+        <% saved.forEach((recipe) => { %>
+        <li class="card-list__item"><%- include('./src/views/partials/recipe-card.ejs', { recipe, variant: 'horizontal', idPrefix: 'favorite' }) %></li>
+        <% }) %>
+      </ul>
+      <p class="favorites__empty state" hidden>
+        <span data-i18n="favorites.empty">You have no saved recipes yet.</span>
+        <a class="button button--primary" href="./recipes.html" data-i18n="favorites.browse">Browse recipes</a>
+      </p>
+    </section>
+  </main>
+
+  <%- include('./src/views/partials/footer.ejs', { page: 'favorites' }) %>
+</body>
+</html>

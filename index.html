@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%- include('./src/views/partials/head.ejs', {
+    title: 'Home',
+    description: 'Find recipes with the ingredients you have or generate a new one with AI.',
+  }) %>
+</head>
+<body class="page page--home">
+  <%- include('./src/views/partials/header.ejs', { page: 'home' }) %>
+  <% const byId = (id) => recipes.find((item) => item.id === id); %>
+
+  <main class="main home" id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="hero__eyebrow">
+          <%- include('./src/views/partials/icon.ejs', { name: 'star', size: 12, filled: true }) %>
+          <span data-i18n="home.eyebrow">AI-powered recipes</span>
+        </p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__line" data-i18n="home.title1">Your ingredients.</span>
+          <span class="hero__line" data-i18n="home.title2">Endless possibilities.</span>
+        </h1>
+        <p class="hero__text" data-i18n="home.lead">Find your next favorite meal or create a recipe with AI.</p>
+        <form class="hero__search search-form" role="search" action="./recipes.html" method="get">
+          <label class="search-form__label u-sr-only" for="hero-query" data-i18n="home.searchLabel">Search recipes</label>
+          <div class="search-form__field">
+            <%- include('./src/views/partials/icon.ejs', { name: 'search', size: 18, className: 'search-form__icon' }) %>
+            <input class="search-form__input" id="hero-query" name="q" type="search" autocomplete="off" maxlength="60" placeholder="Search recipes...." data-i18n-placeholder="home.searchPlaceholder">
+          </div>
+          <button class="search-form__button button button--primary" type="submit" data-i18n="home.searchSubmit">Search</button>
+        </form>
+        <a class="hero__ai-link" href="#generator">
+          <span data-i18n="home.aiLink">Or generate a recipe with AI</span>
+          <%- include('./src/views/partials/icon.ejs', { name: 'arrow-right', size: 14 }) %>
+        </a>
+      </div>
+      <aside class="hero__featured" aria-label="Featured recipe" data-i18n-aria-label="home.featured">
+        <%- include('./src/views/partials/recipe-card.ejs', { recipe: byId(featuredId), headingLevel: 2, idPrefix: 'featured' }) %>
+      </aside>
+    </section>
+
+    <section class="recent" aria-labelledby="recent-title">
+      <h2 class="section-title" id="recent-title" data-i18n="home.recentTitle">Recently searched</h2>
+      <ul class="recent__list card-list card-list--3">
+        <% recentIds.map(byId).forEach((recipe) => { %>
+        <li class="card-list__item"><%- include('./src/views/partials/recipe-card.ejs', { recipe, idPrefix: 'recent' }) %></li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="generator" id="generator" aria-labelledby="generator-title">
+      <h2 class="generator__title" id="generator-title" data-i18n="home.generatorTitle">What’s in your kitchen?</h2>
+      <p class="generator__text" data-i18n="home.generatorText">Turn the ingredients you have into something delicious.</p>
+      <form class="generator__form" action="./recipes.html" method="get">
+        <fieldset class="generator__ingredients">
+          <legend class="generator__label" data-i18n="home.ingredients">Ingredients</legend>
+          <ul class="generator__chips chips" aria-label="Added ingredients" data-i18n-aria-label="home.addedIngredients">
+            <% kitchenIngredients.forEach((item) => { %>
+            <li class="chips__item">
+              <span class="chips__text"><%= item %></span>
+              <button class="chips__remove" type="button" aria-label="Remove <%= item %>" data-action="remove-ingredient">
+                <%- include('./src/views/partials/icon.ejs', { name: 'close', size: 12 }) %>
+              </button>
+              <input type="hidden" name="ingredient" value="<%= item %>">
+            </li>
+            <% }) %>
+          </ul>
+          <label class="u-sr-only" for="ingredient-input" data-i18n="home.addIngredient">Add an ingredient</label>
+          <input class="generator__input field" id="ingredient-input" type="text" autocomplete="off" maxlength="30" pattern="[A-Za-z][A-Za-z '\-]{1,29}" placeholder="Add an ingredient..." data-i18n-placeholder="home.addIngredientPlaceholder" aria-describedby="ingredient-status">
+          <p class="generator__status" id="ingredient-status" aria-live="polite">
+            <%- include('./src/views/partials/icon.ejs', { name: 'check', size: 16 }) %>
+            <span class="generator__status-text"><%= kitchenIngredients.length %> ingredients added</span>
+          </p>
+        </fieldset>
+        <div class="generator__options">
+          <div class="generator__field">
+            <label class="generator__label" for="generator-diet" data-i18n="home.diet">Diet</label>
+            <select class="generator__select field" id="generator-diet" name="diet">
+              <option value="">Any</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="gluten-free">Gluten-free</option>
+            </select>
+          </div>
+          <div class="generator__field">
+            <label class="generator__label" for="generator-time" data-i18n="home.time">Time</label>
+            <select class="generator__select field" id="generator-time" name="maxTime">
+              <option value="15">Up to 15 min</option>
+              <option value="30" selected>Up to 30 min</option>
+              <option value="60">Up to 60 min</option>
+              <option value="">Any time</option>
+            </select>
+          </div>
+          <button class="generator__submit button button--primary button--large" type="submit">
+            <%- include('./src/views/partials/icon.ejs', { name: 'star', size: 14, filled: true }) %>
+            <span data-i18n="home.generate">Generate recipe</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="categories" aria-labelledby="categories-title">
+      <h2 class="section-title" id="categories-title" data-i18n="home.categoriesTitle">Browse by category</h2>
+      <ul class="categories__list">
+        <% categories.forEach((category) => { %>
+        <li class="categories__item">
+          <a class="category-tile" href="./recipes.html?category=<%= category.id %>">
+            <%- include('./src/views/partials/picture.ejs', {
+              name: category.image,
+              alt: '',
+              sizes: '(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw',
+              width: 800,
+              height: 400,
+              pictureClass: 'category-tile__media',
+              imgClass: 'category-tile__img',
+            }) %>
+            <span class="category-tile__label"><%= category.label %></span>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 class="section-title" id="how-title" data-i18n="home.howTitle">How it works</h2>
+      <ol class="how__list">
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step1Title">Add your ingredients</h3>
+          <p class="how__step-text" data-i18n="home.step1Text">Tell us what you have in your kitchen.</p>
+        </li>
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step2Title">Generate with AI</h3>
+          <p class="how__step-text" data-i18n="home.step2Text">Get a recipe tailored to your ingredients and preferences.</p>
+        </li>
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step3Title">Cook and enjoy</h3>
+          <p class="how__step-text" data-i18n="home.step3Text">Follow the steps and save your favorites.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <%- include('./src/views/partials/footer.ejs', { page: 'home' }) %>
+</body>
+</html>

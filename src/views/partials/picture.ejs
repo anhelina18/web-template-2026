@@ -1,0 +1,20 @@
+<%
+  const widths = locals.widths || [400, 800];
+  const base = '/src/assets/images/' + name;
+  const srcset = (ext) => widths.map((w) => base + '-' + w + '.' + ext + ' ' + w + 'w').join(', ');
+  const fallback = base + '-' + widths[widths.length - 1] + '.jpg';
+%>
+<picture class="<%= pictureClass %>">
+  <source type="image/webp" srcset="<%= srcset('webp') %>" sizes="<%= sizes %>">
+  <img
+    class="<%= imgClass %>"
+    src="<%= fallback %>"
+    srcset="<%= srcset('jpg') %>"
+    sizes="<%= sizes %>"
+    width="<%= locals.width || 800 %>"
+    height="<%= locals.height || 600 %>"
+    alt="<%= alt %>"
+    <%- locals.itemprop ? 'itemprop="' + locals.itemprop + '"' : '' %>
+    <%- locals.priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' %>
+    decoding="async">
+</picture>

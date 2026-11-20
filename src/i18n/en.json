@@ -1,0 +1,98 @@
+{
+  "a11y": {
+    "skip": "Skip to main content"
+  },
+  "nav": {
+    "mainLabel": "Main",
+    "footerLabel": "Footer",
+    "home": "Home",
+    "recipes": "Recipes",
+    "favorites": "Favorites"
+  },
+  "header": {
+    "openMenu": "Open menu",
+    "generate": "Generate recipe"
+  },
+  "footer": {
+    "social": "Social media"
+  },
+  "card": {
+    "save": "Save to favorites",
+    "view": "View recipe",
+    "details": "Recipe details"
+  },
+  "home": {
+    "eyebrow": "AI-powered recipes",
+    "title1": "Your ingredients.",
+    "title2": "Endless possibilities.",
+    "lead": "Find your next favorite meal or create a recipe with AI.",
+    "searchLabel": "Search recipes",
+    "searchPlaceholder": "Search recipes....",
+    "searchSubmit": "Search",
+    "aiLink": "Or generate a recipe with AI",
+    "featured": "Featured recipe",
+    "recentTitle": "Recently searched",
+    "generatorTitle": "What’s in your kitchen?",
+    "generatorText": "Turn the ingredients you have into something delicious.",
+    "ingredients": "Ingredients",
+    "addedIngredients": "Added ingredients",
+    "addIngredient": "Add an ingredient",
+    "addIngredientPlaceholder": "Add an ingredient...",
+    "diet": "Diet",
+    "time": "Time",
+    "generate": "Generate recipe",
+    "categoriesTitle": "Browse by category",
+    "howTitle": "How it works",
+    "step1Title": "Add your ingredients",
+    "step1Text": "Tell us what you have in your kitchen.",
+    "step2Title": "Generate with AI",
+    "step2Text": "Get a recipe tailored to your ingredients and preferences.",
+    "step3Title": "Cook and enjoy",
+    "step3Text": "Follow the steps and save your favorites."
+  },
+  "catalog": {
+    "title": "Recipes",
+    "lead": "Find something delicious for every day.",
+    "searchLabel": "Search recipes",
+    "searchPlaceholder": "Search recipes....",
+    "searchSubmit": "Search",
+    "showFilters": "Show filters",
+    "filtersTitle": "Filters",
+    "category": "Category",
+    "allRecipes": "All recipes",
+    "diet": "Diet",
+    "time": "Cooking time",
+    "any": "Any",
+    "reset": "Reset filters",
+    "results": "Results",
+    "sortLabel": "Sort recipes",
+    "pagination": "Pagination",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "recipe": {
+    "back": "Back to recipes",
+    "save": "Save to favorites",
+    "print": "Print recipe",
+    "prep": "Prep",
+    "cook": "Cook",
+    "serves": "Serves",
+    "ingredients": "Ingredients",
+    "fewer": "Fewer servings",
+    "more": "More servings",
+    "servings": "servings",
+    "instructions": "Instructions",
+    "tip": "Cooking tip",
+    "similar": "You might also like"
+  },
+  "favorites": {
+    "title": "Your favorites",
+    "lead": "The recipes you love, all in one place.",
+    "searchLabel": "Search your favorites",
+    "searchPlaceholder": "Search your favorites....",
+    "allCategories": "All categories",
+    "saved": "Saved recipes",
+    "empty": "You have no saved recipes yet.",
+    "browse": "Browse recipes"
+  }
+}

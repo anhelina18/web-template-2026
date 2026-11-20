@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="footer__bar">
+    <div class="footer__brand">
+      <a class="footer__logo logo" href="./index.html">
+        <%- include('./icon.ejs', { name: 'chef', size: 28, className: 'logo__icon' }) %>
+        <span class="logo__text"><%= site.name %></span>
+      </a>
+      <p class="footer__copy"><small>&copy; <%= site.year %> <%= site.name %></small></p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer" data-i18n-aria-label="nav.footerLabel">
+      <ul class="footer__list">
+        <% site.nav.forEach((item) => { const active = item.id === page; %>
+        <li class="footer__item"><a class="footer__link<%= active ? ' footer__link--active' : '' %>" href="<%= item.href %>"<%- active ? ' aria-current="page"' : '' %> data-i18n="<%= item.i18n %>"><%= item.label %></a></li>
+        <% }) %>
+      </ul>
+    </nav>
+    <ul class="footer__social" aria-label="Social media" data-i18n-aria-label="footer.social">
+      <% site.social.forEach((item) => { %>
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="<%= item.href %>" target="_blank" rel="noopener" aria-label="<%= site.name %> on <%= item.label %>">
+          <%- include('./icon.ejs', { name: item.icon, size: 26 }) %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</footer>

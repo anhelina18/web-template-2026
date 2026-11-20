@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%- include('./src/views/partials/head.ejs', {
+    title: 'Recipes',
+    description: 'Browse, filter and sort recipes by category, diet and cooking time.',
+  }) %>
+</head>
+<body class="page page--recipes">
+  <%- include('./src/views/partials/header.ejs', { page: 'recipes' }) %>
+
+  <main class="main catalog" id="main">
+    <header class="page-header">
+      <h1 class="page-header__title" data-i18n="catalog.title">Recipes</h1>
+      <p class="page-header__text" data-i18n="catalog.lead">Find something delicious for every day.</p>
+    </header>
+
+    <div class="catalog__layout">
+      <form class="catalog__search search-form search-form--inline" role="search" action="./recipes.html" method="get">
+        <label class="search-form__label u-sr-only" for="catalog-query" data-i18n="catalog.searchLabel">Search recipes</label>
+        <div class="search-form__field">
+          <%- include('./src/views/partials/icon.ejs', { name: 'search', size: 18, className: 'search-form__icon' }) %>
+          <input class="search-form__input" id="catalog-query" name="q" type="search" autocomplete="off" maxlength="60" placeholder="Search recipes...." data-i18n-placeholder="catalog.searchPlaceholder">
+        </div>
+        <button class="search-form__button button button--primary" type="submit" data-i18n="catalog.searchSubmit">Search</button>
+        <button class="search-form__filters icon-button icon-button--outline" type="button" aria-expanded="false" aria-controls="filters" aria-label="Show filters" data-i18n-aria-label="catalog.showFilters">
+          <%- include('./src/views/partials/icon.ejs', { name: 'sliders' }) %>
+        </button>
+      </form>
+
+      <aside class="catalog__filters filters" id="filters" aria-labelledby="filters-title">
+        <h2 class="filters__title" id="filters-title" data-i18n="catalog.filtersTitle">Filters</h2>
+        <form class="filters__form" action="./recipes.html" method="get">
+          <fieldset class="filters__group filters__group--category">
+            <legend class="filters__legend" data-i18n="catalog.category">Category</legend>
+            <div class="filters__options">
+              <label class="filter-option">
+                <input class="filter-option__input" type="radio" name="category" value="" checked>
+                <span class="filter-option__label" data-i18n="catalog.allRecipes">All recipes</span>
+              </label>
+              <% categories.forEach((category) => { %>
+              <label class="filter-option">
+                <input class="filter-option__input" type="radio" name="category" value="<%= category.id %>">
+                <span class="filter-option__label"><%= category.label %></span>
+              </label>
+              <% }) %>
+            </div>
+          </fieldset>
+
+          <fieldset class="filters__group filters__group--extra">
+            <legend class="filters__legend" data-i18n="catalog.diet">Diet</legend>
+            <label class="check">
+              <input class="check__input" type="checkbox" name="diet" value="vegetarian">
+              <span class="check__label">Vegetarian</span>
+            </label>
+            <label class="check">
+              <input class="check__input" type="checkbox" name="diet" value="vegan">
+              <span class="check__label">Vegan</span>
+            </label>
+            <label class="check">
+              <input class="check__input" type="checkbox" name="diet" value="gluten-free">
+              <span class="check__label">Gluten-free</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="filters__group filters__group--extra">
+            <legend class="filters__legend" data-i18n="catalog.time">Cooking time</legend>
+            <div class="filters__pills">
+              <label class="pill">
+                <input class="pill__input" type="radio" name="maxTime" value="" checked>
+                <span class="pill__label" data-i18n="catalog.any">Any</span>
+              </label>
+              <label class="pill">
+                <input class="pill__input" type="radio" name="maxTime" value="15">
+                <span class="pill__label">Under 15 min</span>
+              </label>
+              <label class="pill">
+                <input class="pill__input" type="radio" name="maxTime" value="30">
+                <span class="pill__label">Under 30 min</span>
+              </label>
+              <label class="pill">
+                <input class="pill__input" type="radio" name="maxTime" value="60">
+                <span class="pill__label">Under 60 min</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button class="filters__reset button button--outline" type="reset" data-i18n="catalog.reset">Reset filters</button>
+        </form>
+      </aside>
+
+      <section class="catalog__results" aria-labelledby="results-title">
+        <h2 class="u-sr-only" id="results-title" data-i18n="catalog.results">Results</h2>
+        <div class="catalog__toolbar">
+          <p class="catalog__count" aria-live="polite"><span class="catalog__count-value"><%= recipes.length %></span> recipes found</p>
+          <label class="u-sr-only" for="sort" data-i18n="catalog.sortLabel">Sort recipes</label>
+          <select class="catalog__sort select-pill" id="sort" name="sort">
+            <option value="popular">Sort by: Popular</option>
+            <option value="time">Sort by: Quickest</option>
+            <option value="title">Sort by: A–Z</option>
+          </select>
+        </div>
+
+        <ul class="catalog__list card-list card-list--2">
+          <% recipes.forEach((recipe) => { %>
+          <li class="card-list__item"><%- include('./src/views/partials/recipe-card.ejs', { recipe, variant: 'horizontal' }) %></li>
+          <% }) %>
+        </ul>
+
+        <nav class="pagination" aria-label="Pagination" data-i18n-aria-label="catalog.pagination">
+          <ul class="pagination__list">
+            <li class="pagination__item"><span class="pagination__link pagination__link--disabled" aria-disabled="true" data-i18n="catalog.prev">Previous</span></li>
+            <li class="pagination__item"><a class="pagination__link pagination__link--active" href="./recipes.html?page=1" aria-current="page" aria-label="Page 1">1</a></li>
+            <li class="pagination__item"><a class="pagination__link" href="./recipes.html?page=2" aria-label="Page 2">2</a></li>
+            <li class="pagination__item"><a class="pagination__link" href="./recipes.html?page=2" rel="next" data-i18n="catalog.next">Next</a></li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </main>
+
+  <%- include('./src/views/partials/footer.ejs', { page: 'recipes' }) %>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<%
+  const r = recipe;
+  const variant = locals.variant || 'vertical';
+  const level = locals.headingLevel || 3;
+  const saved = favoriteIds.includes(r.id);
+  const titleId = (locals.idPrefix || 'card') + '-' + r.id + '-title';
+  const sizes = variant === 'vertical'
+    ? '(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw'
+    : '(min-width: 768px) 180px, 96px';
+%>
+<article class="recipe-card recipe-card--<%= variant %>" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="<%= r.id %>">
+  <%- include('./picture.ejs', {
+    name: r.image,
+    alt: r.alt,
+    sizes,
+    widths: [400, 800],
+    pictureClass: 'recipe-card__media',
+    imgClass: 'recipe-card__img',
+    itemprop: 'image',
+  }) %>
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h<%= level %> class="recipe-card__title" id="<%= titleId %>">
+        <a class="recipe-card__link" href="./recipe.html?id=<%= r.id %>" itemprop="url"><span itemprop="name"><%= r.title %></span></a>
+      </h<%= level %>>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="<%= saved %>" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="<%= titleId %>" data-action="toggle-favorite">
+        <%- include('./icon.ejs', { name: 'heart', size: 22, filled: saved }) %>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <%- include('./icon.ejs', { name: 'clock', size: 14 }) %>
+        <time itemprop="totalTime" datetime="PT<%= r.time %>M"><%= r.time %> min</time>
+      </li>
+      <li class="meta__item">
+        <%- include('./icon.ejs', { name: 'chef', size: 14 }) %>
+        <span><%= r.difficulty %></span>
+      </li>
+    </ul>
+    <% if (variant === 'horizontal') { %>
+    <p class="recipe-card__description" itemprop="description"><%= r.description %></p>
+    <% } %>
+    <meta itemprop="recipeCategory" content="<%= r.category %>">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=<%= r.id %>" aria-describedby="<%= titleId %>">
+      <span data-i18n="card.view">View recipe</span>
+      <%- include('./icon.ejs', { name: 'arrow-right', size: 14 }) %>
+    </a>
+  </div>
+</article>
