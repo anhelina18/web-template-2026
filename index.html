@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Find recipes with the ingredients you have or generate a new one with AI.">
+<title>Home | Recipe Finder</title>
+
+  <script type="module" crossorigin src="./assets/main-CFapHK7z.js"></script>
+</head>
+<body class="page page--home">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+<header class="header">
+  <div class="header__bar">
+    <a class="header__logo logo" href="./index.html">
+      <svg class="icon icon--chef logo__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+      <span class="logo__text">Recipe Finder</span>
+    </a>
+    <button class="header__toggle icon-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu" data-i18n-aria-label="header.openMenu">
+      <svg class="icon icon--menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="header__nav nav" id="main-nav" aria-label="Main" data-i18n-aria-label="nav.mainLabel">
+      <ul class="nav__list">
+        
+        <li class="nav__item">
+          <a class="nav__link nav__link--active" href="./index.html" aria-current="page" data-i18n="nav.home">Home</a>
+        </li>
+        
+        <li class="nav__item">
+          <a class="nav__link" href="./recipes.html" data-i18n="nav.recipes">Recipes</a>
+        </li>
+        
+        <li class="nav__item">
+          <a class="nav__link" href="./favorites.html" data-i18n="nav.favorites">Favorites</a>
+        </li>
+        
+      </ul>
+      <a class="nav__cta button button--primary button--small" href="./index.html#generator">
+        <svg class="icon icon--star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+        <span data-i18n="header.generate">Generate recipe</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+  
+
+  <main class="main home" id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="hero__eyebrow">
+          <svg class="icon icon--star" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+          <span data-i18n="home.eyebrow">AI-powered recipes</span>
+        </p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__line" data-i18n="home.title1">Your ingredients.</span>
+          <span class="hero__line" data-i18n="home.title2">Endless possibilities.</span>
+        </h1>
+        <p class="hero__text" data-i18n="home.lead">Find your next favorite meal or create a recipe with AI.</p>
+        <form class="hero__search search-form" role="search" action="./recipes.html" method="get">
+          <label class="search-form__label u-sr-only" for="hero-query" data-i18n="home.searchLabel">Search recipes</label>
+          <div class="search-form__field">
+            <svg class="icon icon--search search-form__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+            <input class="search-form__input" id="hero-query" name="q" type="search" autocomplete="off" maxlength="60" placeholder="Search recipes...." data-i18n-placeholder="home.searchPlaceholder">
+          </div>
+          <button class="search-form__button button button--primary" type="submit" data-i18n="home.searchSubmit">Search</button>
+        </form>
+        <a class="hero__ai-link" href="#generator">
+          <span data-i18n="home.aiLink">Or generate a recipe with AI</span>
+          <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <aside class="hero__featured" aria-label="Featured recipe" data-i18n-aria-label="home.featured">
+        
+<article class="recipe-card recipe-card--vertical" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="1">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/strawberry-pancakes-400-Cw31KebZ.webp 400w, ./assets/strawberry-pancakes-800-A0S1dd4A.webp 800w" sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw">
+  <img
+    class="recipe-card__img"
+    src="./assets/strawberry-pancakes-800-C8oX_DUv.jpg"
+    srcset="./assets/strawberry-pancakes-400-BGRzlqOR.jpg 400w, ./assets/strawberry-pancakes-800-C8oX_DUv.jpg 800w"
+    sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw"
+    width="800"
+    height="600"
+    alt="Stack of pancakes topped with strawberries and maple syrup"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h2 class="recipe-card__title" id="featured-1-title">
+        <a class="recipe-card__link" href="./recipe.html?id=1" itemprop="url"><span itemprop="name">Strawberry Pancakes</span></a>
+      </h2>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="featured-1-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT30M">30 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <meta itemprop="recipeCategory" content="Breakfast">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=1" aria-describedby="featured-1-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+
+      </aside>
+    </section>
+
+    <section class="recent" aria-labelledby="recent-title">
+      <h2 class="section-title" id="recent-title" data-i18n="home.recentTitle">Recently searched</h2>
+      <ul class="recent__list card-list card-list--3">
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--vertical" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="1">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/strawberry-pancakes-400-Cw31KebZ.webp 400w, ./assets/strawberry-pancakes-800-A0S1dd4A.webp 800w" sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw">
+  <img
+    class="recipe-card__img"
+    src="./assets/strawberry-pancakes-800-C8oX_DUv.jpg"
+    srcset="./assets/strawberry-pancakes-400-BGRzlqOR.jpg 400w, ./assets/strawberry-pancakes-800-C8oX_DUv.jpg 800w"
+    sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw"
+    width="800"
+    height="600"
+    alt="Stack of pancakes topped with strawberries and maple syrup"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="recent-1-title">
+        <a class="recipe-card__link" href="./recipe.html?id=1" itemprop="url"><span itemprop="name">Strawberry Pancakes</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="recent-1-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT30M">30 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <meta itemprop="recipeCategory" content="Breakfast">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=1" aria-describedby="recent-1-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--vertical" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="2">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/creamy-tomato-pasta-400-XEijdQPa.webp 400w, ./assets/creamy-tomato-pasta-800-CoRHG0bW.webp 800w" sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw">
+  <img
+    class="recipe-card__img"
+    src="./assets/creamy-tomato-pasta-800-C4jwPNJr.jpg"
+    srcset="./assets/creamy-tomato-pasta-400-DLlvxu_h.jpg 400w, ./assets/creamy-tomato-pasta-800-C4jwPNJr.jpg 800w"
+    sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw"
+    width="800"
+    height="600"
+    alt="Penne in a creamy tomato sauce with grated parmesan"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="recent-2-title">
+        <a class="recipe-card__link" href="./recipe.html?id=2" itemprop="url"><span itemprop="name">Creamy Tomato Pasta</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="recent-2-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT25M">25 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <meta itemprop="recipeCategory" content="Dinner">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=2" aria-describedby="recent-2-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--vertical" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="3">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/avocado-toast-400-CWK_WQ_a.webp 400w, ./assets/avocado-toast-800-CoHsdYau.webp 800w" sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw">
+  <img
+    class="recipe-card__img"
+    src="./assets/avocado-toast-800-DtTTSQLb.jpg"
+    srcset="./assets/avocado-toast-400-B7UJZoN_.jpg 400w, ./assets/avocado-toast-800-DtTTSQLb.jpg 800w"
+    sizes="(min-width: 1280px) 360px, (min-width: 768px) 33vw, 100vw"
+    width="800"
+    height="600"
+    alt="Toast with smashed avocado, radish and microgreens"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="recent-3-title">
+        <a class="recipe-card__link" href="./recipe.html?id=3" itemprop="url"><span itemprop="name">Avocado Toast</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="recent-3-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT10M">10 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <meta itemprop="recipeCategory" content="Breakfast">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=3" aria-describedby="recent-3-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+      </ul>
+    </section>
+
+    <section class="generator" id="generator" aria-labelledby="generator-title">
+      <h2 class="generator__title" id="generator-title" data-i18n="home.generatorTitle">What’s in your kitchen?</h2>
+      <p class="generator__text" data-i18n="home.generatorText">Turn the ingredients you have into something delicious.</p>
+      <form class="generator__form" action="./recipes.html" method="get">
+        <fieldset class="generator__ingredients">
+          <legend class="generator__label" data-i18n="home.ingredients">Ingredients</legend>
+          <ul class="generator__chips chips" aria-label="Added ingredients" data-i18n-aria-label="home.addedIngredients">
+            
+            <li class="chips__item">
+              <span class="chips__text">Tomatoes</span>
+              <button class="chips__remove" type="button" aria-label="Remove Tomatoes" data-action="remove-ingredient">
+                <svg class="icon icon--close" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7 7 17"/></svg>
+              </button>
+              <input type="hidden" name="ingredient" value="Tomatoes">
+            </li>
+            
+            <li class="chips__item">
+              <span class="chips__text">Pasta</span>
+              <button class="chips__remove" type="button" aria-label="Remove Pasta" data-action="remove-ingredient">
+                <svg class="icon icon--close" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7 7 17"/></svg>
+              </button>
+              <input type="hidden" name="ingredient" value="Pasta">
+            </li>
+            
+            <li class="chips__item">
+              <span class="chips__text">Cheese</span>
+              <button class="chips__remove" type="button" aria-label="Remove Cheese" data-action="remove-ingredient">
+                <svg class="icon icon--close" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7 7 17"/></svg>
+              </button>
+              <input type="hidden" name="ingredient" value="Cheese">
+            </li>
+            
+          </ul>
+          <label class="u-sr-only" for="ingredient-input" data-i18n="home.addIngredient">Add an ingredient</label>
+          <input class="generator__input field" id="ingredient-input" type="text" autocomplete="off" maxlength="30" pattern="[A-Za-z][A-Za-z '\-]{1,29}" placeholder="Add an ingredient..." data-i18n-placeholder="home.addIngredientPlaceholder" aria-describedby="ingredient-status">
+          <p class="generator__status" id="ingredient-status" aria-live="polite">
+            <svg class="icon icon--check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <span class="generator__status-text">3 ingredients added</span>
+          </p>
+        </fieldset>
+        <div class="generator__options">
+          <div class="generator__field">
+            <label class="generator__label" for="generator-diet" data-i18n="home.diet">Diet</label>
+            <select class="generator__select field" id="generator-diet" name="diet">
+              <option value="">Any</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="gluten-free">Gluten-free</option>
+            </select>
+          </div>
+          <div class="generator__field">
+            <label class="generator__label" for="generator-time" data-i18n="home.time">Time</label>
+            <select class="generator__select field" id="generator-time" name="maxTime">
+              <option value="15">Up to 15 min</option>
+              <option value="30" selected>Up to 30 min</option>
+              <option value="60">Up to 60 min</option>
+              <option value="">Any time</option>
+            </select>
+          </div>
+          <button class="generator__submit button button--primary button--large" type="submit">
+            <svg class="icon icon--star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+            <span data-i18n="home.generate">Generate recipe</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="categories" aria-labelledby="categories-title">
+      <h2 class="section-title" id="categories-title" data-i18n="home.categoriesTitle">Browse by category</h2>
+      <ul class="categories__list">
+        
+        <li class="categories__item">
+          <a class="category-tile" href="./recipes.html?category=breakfast">
+            
+<picture class="category-tile__media">
+  <source type="image/webp" srcset="./assets/category-breakfast-400-CG8utsL2.webp 400w, ./assets/category-breakfast-800-D3ZCI5FC.webp 800w" sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw">
+  <img
+    class="category-tile__img"
+    src="./assets/category-breakfast-800-B916WuS5.jpg"
+    srcset="./assets/category-breakfast-400-ACzN_8H3.jpg 400w, ./assets/category-breakfast-800-B916WuS5.jpg 800w"
+    sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw"
+    width="800"
+    height="400"
+    alt=""
+    
+    loading="lazy"
+    decoding="async">
+</picture>
+
+            <span class="category-tile__label">Breakfast</span>
+          </a>
+        </li>
+        
+        <li class="categories__item">
+          <a class="category-tile" href="./recipes.html?category=lunch">
+            
+<picture class="category-tile__media">
+  <source type="image/webp" srcset="./assets/category-lunch-400-DaW-PS5p.webp 400w, ./assets/category-lunch-800-tQM76yUk.webp 800w" sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw">
+  <img
+    class="category-tile__img"
+    src="./assets/category-lunch-800-DxK2EIxl.jpg"
+    srcset="./assets/category-lunch-400-DYK1C8-h.jpg 400w, ./assets/category-lunch-800-DxK2EIxl.jpg 800w"
+    sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw"
+    width="800"
+    height="400"
+    alt=""
+    
+    loading="lazy"
+    decoding="async">
+</picture>
+
+            <span class="category-tile__label">Lunch</span>
+          </a>
+        </li>
+        
+        <li class="categories__item">
+          <a class="category-tile" href="./recipes.html?category=dinner">
+            
+<picture class="category-tile__media">
+  <source type="image/webp" srcset="./assets/category-dinner-400-tfb9p1Zb.webp 400w, ./assets/category-dinner-800-BEqp39kR.webp 800w" sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw">
+  <img
+    class="category-tile__img"
+    src="./assets/category-dinner-800-CinG6mzK.jpg"
+    srcset="./assets/category-dinner-400-BXfqPMCo.jpg 400w, ./assets/category-dinner-800-CinG6mzK.jpg 800w"
+    sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw"
+    width="800"
+    height="400"
+    alt=""
+    
+    loading="lazy"
+    decoding="async">
+</picture>
+
+            <span class="category-tile__label">Dinner</span>
+          </a>
+        </li>
+        
+        <li class="categories__item">
+          <a class="category-tile" href="./recipes.html?category=desserts">
+            
+<picture class="category-tile__media">
+  <source type="image/webp" srcset="./assets/category-desserts-400-V-05UOOT.webp 400w, ./assets/category-desserts-800-CWH0cNoV.webp 800w" sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw">
+  <img
+    class="category-tile__img"
+    src="./assets/category-desserts-800-ydNniLRk.jpg"
+    srcset="./assets/category-desserts-400-2faSLD5a.jpg 400w, ./assets/category-desserts-800-ydNniLRk.jpg 800w"
+    sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 50vw"
+    width="800"
+    height="400"
+    alt=""
+    
+    loading="lazy"
+    decoding="async">
+</picture>
+
+            <span class="category-tile__label">Desserts</span>
+          </a>
+        </li>
+        
+      </ul>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 class="section-title" id="how-title" data-i18n="home.howTitle">How it works</h2>
+      <ol class="how__list">
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step1Title">Add your ingredients</h3>
+          <p class="how__step-text" data-i18n="home.step1Text">Tell us what you have in your kitchen.</p>
+        </li>
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step2Title">Generate with AI</h3>
+          <p class="how__step-text" data-i18n="home.step2Text">Get a recipe tailored to your ingredients and preferences.</p>
+        </li>
+        <li class="how__step">
+          <h3 class="how__step-title" data-i18n="home.step3Title">Cook and enjoy</h3>
+          <p class="how__step-text" data-i18n="home.step3Text">Follow the steps and save your favorites.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="footer__bar">
+    <div class="footer__brand">
+      <a class="footer__logo logo" href="./index.html">
+        <svg class="icon icon--chef logo__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span class="logo__text">Recipe Finder</span>
+      </a>
+      <p class="footer__copy"><small>&copy; 2026 Recipe Finder</small></p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer" data-i18n-aria-label="nav.footerLabel">
+      <ul class="footer__list">
+        
+        <li class="footer__item"><a class="footer__link footer__link--active" href="./index.html" aria-current="page" data-i18n="nav.home">Home</a></li>
+        
+        <li class="footer__item"><a class="footer__link" href="./recipes.html" data-i18n="nav.recipes">Recipes</a></li>
+        
+        <li class="footer__item"><a class="footer__link" href="./favorites.html" data-i18n="nav.favorites">Favorites</a></li>
+        
+      </ul>
+    </nav>
+    <ul class="footer__social" aria-label="Social media" data-i18n-aria-label="footer.social">
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on Instagram">
+          <svg class="icon icon--camera" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8.5 7l1.5-3h4l1.5 3"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        </a>
+      </li>
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.pinterest.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on Pinterest">
+          <svg class="icon icon--pin" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/></svg>
+        </a>
+      </li>
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on YouTube">
+          <svg class="icon icon--play" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.3v5.4l4.6-2.7z"/></svg>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

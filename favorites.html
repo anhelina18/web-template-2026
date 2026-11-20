@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The recipes you love, all in one place.">
+<title>Favorites | Recipe Finder</title>
+
+  <script type="module" crossorigin src="./assets/main-CFapHK7z.js"></script>
+</head>
+<body class="page page--favorites">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+<header class="header">
+  <div class="header__bar">
+    <a class="header__logo logo" href="./index.html">
+      <svg class="icon icon--chef logo__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+      <span class="logo__text">Recipe Finder</span>
+    </a>
+    <button class="header__toggle icon-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu" data-i18n-aria-label="header.openMenu">
+      <svg class="icon icon--menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="header__nav nav" id="main-nav" aria-label="Main" data-i18n-aria-label="nav.mainLabel">
+      <ul class="nav__list">
+        
+        <li class="nav__item">
+          <a class="nav__link" href="./index.html" data-i18n="nav.home">Home</a>
+        </li>
+        
+        <li class="nav__item">
+          <a class="nav__link" href="./recipes.html" data-i18n="nav.recipes">Recipes</a>
+        </li>
+        
+        <li class="nav__item">
+          <a class="nav__link nav__link--active" href="./favorites.html" aria-current="page" data-i18n="nav.favorites">Favorites</a>
+        </li>
+        
+      </ul>
+      <a class="nav__cta button button--primary button--small" href="./index.html#generator">
+        <svg class="icon icon--star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+        <span data-i18n="header.generate">Generate recipe</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+  
+
+  <main class="main favorites" id="main">
+    <header class="page-header favorites__header">
+      <span class="favorites__icon">
+        <svg class="icon icon--heart" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </span>
+      <div class="favorites__heading">
+        <h1 class="page-header__title" data-i18n="favorites.title">Your favorites</h1>
+        <p class="page-header__text" data-i18n="favorites.lead">The recipes you love, all in one place.</p>
+      </div>
+      <p class="favorites__badge badge" aria-live="polite"><span class="favorites__count">4</span> saved recipes</p>
+    </header>
+
+    <form class="favorites__toolbar toolbar" role="search" action="./favorites.html" method="get">
+      <label class="u-sr-only" for="favorites-query" data-i18n="favorites.searchLabel">Search your favorites</label>
+      <div class="toolbar__search search-form__field">
+        <svg class="icon icon--search search-form__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+        <input class="search-form__input" id="favorites-query" name="q" type="search" autocomplete="off" maxlength="60" placeholder="Search your favorites...." data-i18n-placeholder="favorites.searchPlaceholder">
+      </div>
+      <button class="toolbar__filters icon-button icon-button--outline" type="button" aria-expanded="false" aria-controls="favorites-selects" aria-label="Show filters" data-i18n-aria-label="catalog.showFilters">
+        <svg class="icon icon--sliders" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>
+      </button>
+      <div class="toolbar__selects" id="favorites-selects">
+        <label class="u-sr-only" for="favorites-category" data-i18n="catalog.category">Category</label>
+        <select class="toolbar__select field" id="favorites-category" name="category">
+          <option value="" data-i18n="favorites.allCategories">All categories</option>
+          
+          <option value="breakfast">Breakfast</option>
+          
+          <option value="lunch">Lunch</option>
+          
+          <option value="dinner">Dinner</option>
+          
+          <option value="desserts">Desserts</option>
+          
+        </select>
+        <label class="u-sr-only" for="favorites-sort" data-i18n="catalog.sortLabel">Sort recipes</label>
+        <select class="toolbar__select field" id="favorites-sort" name="sort">
+          <option value="recent">Recently saved</option>
+          <option value="title">A–Z</option>
+          <option value="time">Quickest</option>
+        </select>
+      </div>
+      <fieldset class="toolbar__chips">
+        <legend class="u-sr-only" data-i18n="catalog.category">Category</legend>
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="" checked>
+          <span class="pill__label">All</span>
+        </label>
+        
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="breakfast">
+          <span class="pill__label">Breakfast</span>
+        </label>
+        
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="lunch">
+          <span class="pill__label">Lunch</span>
+        </label>
+        
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="dinner">
+          <span class="pill__label">Dinner</span>
+        </label>
+        
+        <label class="pill">
+          <input class="pill__input" type="radio" name="category-chip" value="desserts">
+          <span class="pill__label">Desserts</span>
+        </label>
+        
+      </fieldset>
+    </form>
+
+    <section class="favorites__saved" aria-labelledby="saved-title">
+      <h2 class="u-sr-only" id="saved-title" data-i18n="favorites.saved">Saved recipes</h2>
+      <ul class="favorites__list card-list card-list--2">
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--horizontal" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="1">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/strawberry-pancakes-400-Cw31KebZ.webp 400w, ./assets/strawberry-pancakes-800-A0S1dd4A.webp 800w" sizes="(min-width: 768px) 180px, 96px">
+  <img
+    class="recipe-card__img"
+    src="./assets/strawberry-pancakes-800-C8oX_DUv.jpg"
+    srcset="./assets/strawberry-pancakes-400-BGRzlqOR.jpg 400w, ./assets/strawberry-pancakes-800-C8oX_DUv.jpg 800w"
+    sizes="(min-width: 768px) 180px, 96px"
+    width="800"
+    height="600"
+    alt="Stack of pancakes topped with strawberries and maple syrup"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="favorite-1-title">
+        <a class="recipe-card__link" href="./recipe.html?id=1" itemprop="url"><span itemprop="name">Strawberry Pancakes</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="favorite-1-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT30M">30 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <p class="recipe-card__description" itemprop="description">Fluffy pancakes with fresh strawberries.</p>
+    
+    <meta itemprop="recipeCategory" content="Breakfast">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=1" aria-describedby="favorite-1-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--horizontal" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="2">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/creamy-tomato-pasta-400-XEijdQPa.webp 400w, ./assets/creamy-tomato-pasta-800-CoRHG0bW.webp 800w" sizes="(min-width: 768px) 180px, 96px">
+  <img
+    class="recipe-card__img"
+    src="./assets/creamy-tomato-pasta-800-C4jwPNJr.jpg"
+    srcset="./assets/creamy-tomato-pasta-400-DLlvxu_h.jpg 400w, ./assets/creamy-tomato-pasta-800-C4jwPNJr.jpg 800w"
+    sizes="(min-width: 768px) 180px, 96px"
+    width="800"
+    height="600"
+    alt="Penne in a creamy tomato sauce with grated parmesan"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="favorite-2-title">
+        <a class="recipe-card__link" href="./recipe.html?id=2" itemprop="url"><span itemprop="name">Creamy Tomato Pasta</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="favorite-2-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT25M">25 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <p class="recipe-card__description" itemprop="description">Creamy pasta with a rich tomato sauce.</p>
+    
+    <meta itemprop="recipeCategory" content="Dinner">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=2" aria-describedby="favorite-2-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--horizontal" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="3">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/avocado-toast-400-CWK_WQ_a.webp 400w, ./assets/avocado-toast-800-CoHsdYau.webp 800w" sizes="(min-width: 768px) 180px, 96px">
+  <img
+    class="recipe-card__img"
+    src="./assets/avocado-toast-800-DtTTSQLb.jpg"
+    srcset="./assets/avocado-toast-400-B7UJZoN_.jpg 400w, ./assets/avocado-toast-800-DtTTSQLb.jpg 800w"
+    sizes="(min-width: 768px) 180px, 96px"
+    width="800"
+    height="600"
+    alt="Toast with smashed avocado, radish and microgreens"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="favorite-3-title">
+        <a class="recipe-card__link" href="./recipe.html?id=3" itemprop="url"><span itemprop="name">Avocado Toast</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="favorite-3-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT10M">10 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Easy</span>
+      </li>
+    </ul>
+    
+    <p class="recipe-card__description" itemprop="description">Crunchy toast with creamy avocado.</p>
+    
+    <meta itemprop="recipeCategory" content="Breakfast">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=3" aria-describedby="favorite-3-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+        <li class="card-list__item">
+<article class="recipe-card recipe-card--horizontal" itemscope itemtype="https://schema.org/Recipe" data-recipe-id="6">
+  
+<picture class="recipe-card__media">
+  <source type="image/webp" srcset="./assets/berry-yogurt-parfait-400-CNqN4ndg.webp 400w, ./assets/berry-yogurt-parfait-800-BCtEz2Mh.webp 800w" sizes="(min-width: 768px) 180px, 96px">
+  <img
+    class="recipe-card__img"
+    src="./assets/berry-yogurt-parfait-800-BZJY70Rg.jpg"
+    srcset="./assets/berry-yogurt-parfait-400-DM_3BoRV.jpg 400w, ./assets/berry-yogurt-parfait-800-BZJY70Rg.jpg 800w"
+    sizes="(min-width: 768px) 180px, 96px"
+    width="800"
+    height="600"
+    alt="Glass of yogurt layered with berries and granola"
+    itemprop="image"
+    loading="lazy"
+    decoding="async">
+</picture>
+
+  <div class="recipe-card__body">
+    <div class="recipe-card__head">
+      <h3 class="recipe-card__title" id="favorite-6-title">
+        <a class="recipe-card__link" href="./recipe.html?id=6" itemprop="url"><span itemprop="name">Berry Yogurt Parfait</span></a>
+      </h3>
+      <button class="recipe-card__favorite favorite-button" type="button" aria-pressed="true" aria-label="Save to favorites" data-i18n-aria-label="card.save" aria-describedby="favorite-6-title" data-action="toggle-favorite">
+        <svg class="icon icon--heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.8 3.7 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.4 0 5.6 3.3 4.3 6.7-1.8 4.6-9.2 9.1-9.2 9.1z"/></svg>
+      </button>
+    </div>
+    <ul class="recipe-card__meta meta" aria-label="Recipe details" data-i18n-aria-label="card.details">
+      <li class="meta__item">
+        <svg class="icon icon--clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <time itemprop="totalTime" datetime="PT10M">10 min</time>
+      </li>
+      <li class="meta__item">
+        <svg class="icon icon--chef" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span>Medium</span>
+      </li>
+    </ul>
+    
+    <p class="recipe-card__description" itemprop="description">Creamy yogurt with berries and granola.</p>
+    
+    <meta itemprop="recipeCategory" content="Desserts">
+    <a class="recipe-card__cta button button--outline button--small" href="./recipe.html?id=6" aria-describedby="favorite-6-title">
+      <span data-i18n="card.view">View recipe</span>
+      <svg class="icon icon--arrow-right" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</article>
+</li>
+        
+      </ul>
+      <p class="favorites__empty state" hidden>
+        <span data-i18n="favorites.empty">You have no saved recipes yet.</span>
+        <a class="button button--primary" href="./recipes.html" data-i18n="favorites.browse">Browse recipes</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="footer__bar">
+    <div class="footer__brand">
+      <a class="footer__logo logo" href="./index.html">
+        <svg class="icon icon--chef logo__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17.5h10v-4.1a3.6 3.6 0 1 0-2-6.9 3.6 3.6 0 0 0-6 0 3.6 3.6 0 1 0-2 6.9z"/><path d="M7 20.5h10"/></svg>
+        <span class="logo__text">Recipe Finder</span>
+      </a>
+      <p class="footer__copy"><small>&copy; 2026 Recipe Finder</small></p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer" data-i18n-aria-label="nav.footerLabel">
+      <ul class="footer__list">
+        
+        <li class="footer__item"><a class="footer__link" href="./index.html" data-i18n="nav.home">Home</a></li>
+        
+        <li class="footer__item"><a class="footer__link" href="./recipes.html" data-i18n="nav.recipes">Recipes</a></li>
+        
+        <li class="footer__item"><a class="footer__link footer__link--active" href="./favorites.html" aria-current="page" data-i18n="nav.favorites">Favorites</a></li>
+        
+      </ul>
+    </nav>
+    <ul class="footer__social" aria-label="Social media" data-i18n-aria-label="footer.social">
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on Instagram">
+          <svg class="icon icon--camera" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8.5 7l1.5-3h4l1.5 3"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        </a>
+      </li>
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.pinterest.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on Pinterest">
+          <svg class="icon icon--pin" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/></svg>
+        </a>
+      </li>
+      
+      <li class="footer__social-item">
+        <a class="footer__social-link" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Recipe Finder on YouTube">
+          <svg class="icon icon--play" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.3v5.4l4.6-2.7z"/></svg>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
